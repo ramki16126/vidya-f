@@ -53,7 +53,7 @@ const Index = () => {
                 Everything you need to excel in competitive exams and kickstart your tech career.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
-                <Link to="/dashboard">
+                <Link to="/register">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/30">
                     Get Started Free
                   </Button>
@@ -205,7 +205,7 @@ const Index = () => {
                   <br />
                   <span className="text-blue-100">Unlock Your Potential with EduPath.</span>
                 </h2>
-                <Link to="/dashboard">
+                <Link to="/register">
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-50 shadow-lg text-lg px-8 py-6">
                     Sign Up Now
                     <ArrowRight className="ml-2 h-5 w-5" />
