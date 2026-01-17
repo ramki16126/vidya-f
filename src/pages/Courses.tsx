@@ -23,14 +23,73 @@ const Courses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
-      let query = supabase.from("courses").select("*");
 
+      // Mock data to ensure content is visible without login (bypassing RLS)
+      const mockCourses: Course[] = [
+        {
+          id: "1",
+          title: "Physics Fundamentals",
+          description: "Master the basics of mechanics, thermodynamics, and electromagnetism for JEE preparation.",
+          category: "JEE",
+          resource_link: "#"
+        },
+        {
+          id: "2",
+          title: "Advanced Mathematics",
+          description: "Comprehensive guide to calculus, algebra, and coordinate geometry.",
+          category: "JEE",
+          resource_link: "#"
+        },
+        {
+          id: "3",
+          title: "Chemistry Essentials",
+          description: "Organic, inorganic, and physical chemistry concepts explained.",
+          category: "JEE",
+          resource_link: "#"
+        },
+        {
+          id: "4",
+          title: "Biology Complete Guide",
+          description: "Detailed coverage of botany and zoology for medical entrance.",
+          category: "NEET",
+          resource_link: "#"
+        },
+        {
+          id: "5",
+          title: "Physics for NEET",
+          description: "Simplified physics concepts tailored for medical aspirants.",
+          category: "NEET",
+          resource_link: "#"
+        },
+        {
+          id: "6",
+          title: "Chemistry for NEET",
+          description: "Key chemical reactions and periodic table mastery.",
+          category: "NEET",
+          resource_link: "#"
+        },
+        {
+          id: "7",
+          title: "Computer Science 101",
+          description: "Introduction to programming, algorithms, and data structures.",
+          category: "BTECH",
+          resource_link: "#"
+        },
+        {
+          id: "8",
+          title: "Digital Electronics",
+          description: "Understanding logic gates, circuits, and microprocessors.",
+          category: "BTECH",
+          resource_link: "#"
+        }
+      ];
+
+      let filteredCourses = mockCourses;
       if (activeCategory !== "all" && (activeCategory === "JEE" || activeCategory === "NEET" || activeCategory === "BTECH")) {
-        query = query.eq("category", activeCategory);
+        filteredCourses = mockCourses.filter(c => c.category === activeCategory);
       }
 
-      const { data } = await query.order("created_at", { ascending: false });
-      setCourses((data as Course[]) || []);
+      setCourses(filteredCourses);
       setLoading(false);
     };
 

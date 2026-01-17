@@ -17,15 +17,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!user) return;
-
-      const { data } = await supabase
-        .from("profiles")
-        .select("full_name, category")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      setProfile(data);
+      // Mock profile for guest access
+      setProfile({
+        full_name: "Guest Student",
+        category: null
+      });
       setLoading(false);
     };
 
